@@ -2,9 +2,15 @@ pipeline {
     agent any
 
     stages {
+        stage('Clone Code') {
+            steps {
+                git branch: 'main', url: 'https://github.com/TanishqRaj07/todo-app.git'
+            }
+        }
+
         stage('Build and Deploy') {
             steps {
-                // Use the SSH key you just added
+                // Use your SSH credentials here
                 sshagent(['ec2-ssh-key']) {
                     sh '''
                     ssh -o StrictHostKeyChecking=no ubuntu@3.110.40.97 "
