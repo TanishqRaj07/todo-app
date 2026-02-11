@@ -3,13 +3,8 @@ pipeline {
 
     stages {
 
-        stage('Clone Code') {
-            steps {
-                git 'https://github.com/TanishqRaj07/todo-app.git'
-            }
-        }
-
-        stage('Deploy to App Server') {
+        // Jenkins automatically checks out the repo
+        stage('Build and Deploy') {
             steps {
                 sh '''
                 ssh -o StrictHostKeyChecking=no ubuntu@3.110.40.97 "
